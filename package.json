@@ -1,0 +1,32 @@
+{
+  "name": "webpack-app",
+  "version": "1.0.0",
+  "description": "webpack app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/casumarzu/webpack-app.git"
+  },
+  "keywords": [
+    "webpack",
+    "app"
+  ],
+  "author": "Andrey Ivanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/casumarzu/webpack-app/issues"
+  },
+  "homepage": "https://github.com/casumarzu/webpack-app",
+  "dependencies": {
+    "autoprefixer": "^6.0.3",
+    "file-loader": "^0.8.5",
+    "jade": "^1.11.0",
+    "jade-html-loader": "0.0.3",
+    "precss": "^1.2.3",
+    "react": "^0.13.0"
+  }
+}
