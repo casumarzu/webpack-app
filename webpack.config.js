@@ -3,34 +3,44 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
+// BABEL
+// require('babel-loader');
+// require('babel-core');
+// require('babel-preset-es2015');
+// require('babel-preset-react');
+
 module.exports = {
   devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './src/index'
+    './client/index.jsx'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    path: path.resolve(__dirname, 'client'),
+    publicPath: '/assets/',
+    filename: 'bundle.js'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      include: path.join(__dirname, 'src')
-    },{
-      test:   /\.css$/,
-      loader: "style-loader!css-loader!postcss-loader"
-    },{
-      test: /\.jade$/, loader: "jade"
-    }]
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel',
+        query: {
+          presets: ['react', 'es2015']
+        }
+      },
+      { test: /\.jade$/, loader: "jade" },
+      { test: /\.css$/, loader: "style!css" },
+    ]
   },
+
   postcss: function () {
     return [autoprefixer, precss];
-  }
+  },
+
 };
