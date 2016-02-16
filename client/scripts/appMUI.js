@@ -17,9 +17,3 @@ export class App extends React.Component {
     )
   }
 }
-
-
-
-// export function App () {
-//   console.log('App!')
-// }

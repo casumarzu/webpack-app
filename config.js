@@ -1,36 +1,42 @@
-import path from 'path';
-import webpack from 'webpack';
+var path = require('path'),
+    webpack = require('webpack'),
+    WebpackDevServer = require('webpack-dev-server');
+
+var port = 8080,
+    publicPath = '/assets/';
 
 // Post-css
-import autoprefixer from 'autoprefixer';
-import precss from 'precss';
-import pxtorem from 'postcss-pxtorem';
-import postcssShort from 'postcss-short';
-import postcssSorting from 'postcss-sorting';
-import postcssCssnext from 'postcss-cssnext';
-import rucksackcss from 'rucksack-css';
+var autoprefixer = require('autoprefixer'),
+    precss = require('precss'),
+    pxtorem = require('postcss-pxtorem'),
+    postcssShort = require('postcss-short'),
+    postcssSorting = require('postcss-sorting'),
+    postcssCssnext = require('postcss-cssnext'),
+    rucksackcss = require('rucksack-css');
 
-module.exports = {
+var config = {
   devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:' + port,
     'webpack/hot/only-dev-server',
     './client/index.js'
   ],
   output: {
     path: path.resolve(__dirname, 'client'),
-    publicPath: '/assets/',
+    publicPath: publicPath,
     filename: 'bundle.js'
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
   module: {
     loaders: [
       // js bable
-      {test: /\.js?$/i,     loader: 'babel', exclude: /(node_modules)/, query: {presets: ['react', 'es2015']}},
+      {test: /\.js$/, loaders: ['react-hot', 'babel'], include: path.join(__dirname, '/client')},
       // js coffeescript
       {test: /\.coffee?$/i, loader: 'coffee-jsx-loader', exculde: /(node_modules)/},
       // js typescript
       {test: /\.ts?$/i,     loader: 'ts-loader!ts-jsx-loader', exculde: /(node_modules)/},
+      // js closurescript
+      {test: /\.cljs?$/i,   loader: 'closure-loader', exculde: /(node_modules)/},
       // html jade
       {test: /\.jade?$/i,   loader: 'jade', exculde: /node_modules/},
       // css post-css
@@ -45,5 +51,25 @@ module.exports = {
   },
   postcss: function () {
     return [autoprefixer, precss, postcssShort, pxtorem, postcssSorting, postcssCssnext, rucksackcss];
-  }
+  },
+  closureLoader: {
+    paths: [
+      __dirname + '/client'
+    ],
+    es6mode: true,
+    watch: true
+   }
 };
+
+new WebpackDevServer(webpack(config), {
+  contentBase: './client',
+  publicPath: publicPath,
+  hot: true,
+  historyApiFallback: true
+}).listen(port, 'localhost', function (err, result) {
+  if (err) {
+    console.log(err);
+  }
+
+  console.log('Listening at localhost:' + port);
+});
