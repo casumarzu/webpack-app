@@ -61,11 +61,21 @@ var config = {
    }
 };
 
+
+
 new WebpackDevServer(webpack(config), {
   contentBase: './client',
   publicPath: publicPath,
   hot: true,
-  historyApiFallback: true
+  historyApiFallback: true,
+  proxy: {
+   "*": "http://localhost:3000"
+  },
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000
+  },
+  stats: { colors: true },
 }).listen(port, 'localhost', function (err, result) {
   if (err) {
     console.log(err);
