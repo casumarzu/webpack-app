@@ -1,0 +1,31 @@
+:root {
+  --mainColor: #1D1746;
+}
+
+html {
+  size: 100%;
+  background: var(--mainColor);
+  text: 10px 1.5;
+}
+
+@custom-selector :--button button, .button;
+
+section {
+  margin: 40px;
+  text: bold center uppercase black 1.25em 1.5 .05em;
+  size: 200px;
+  background: #CA0C57;
+  color: color(red alpha(-10%));
+}
+
+input::placeholder {
+  color: grey;
+}
+
+:local(.block) {
+  background: color(blue alpha(-10%));
+}
+
+/*input[type="range"]::thumb {
+  background: red;
+}*/
