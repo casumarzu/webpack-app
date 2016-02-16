@@ -8,14 +8,14 @@ html {
   text: 10px 1.5;
 }
 
-@custom-selector :--button button, .button;
+/*@custom-selector :--button button, .button;*/
 
 section {
-  margin: 40px;
+  margin: 0 auto;
   text: bold center uppercase black 1.25em 1.5 .05em;
-  size: 200px;
+  size: 600px;
   background: #CA0C57;
-  color: color(red alpha(-10%));
+  color: color(black alpha(-10%));
 }
 
 input::placeholder {

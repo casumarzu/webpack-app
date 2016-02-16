@@ -5,7 +5,7 @@ const style = {
   margin: 12,
 };
 
-export class App extends React.Component {
+export class Buttons extends React.Component {
   render () {
     return (
       <div>
