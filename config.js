@@ -12,7 +12,11 @@ var autoprefixer = require('autoprefixer'),
     postcssShort = require('postcss-short'),
     postcssSorting = require('postcss-sorting'),
     postcssCssnext = require('postcss-cssnext'),
-    rucksackcss = require('rucksack-css');
+    rucksackcss = require('rucksack-css'),
+    postcssCustomSelectors = require('postcss-custom-selectors'),
+    postcssGrid = require('postcss-grid');
+
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var config = {
   devtool: 'eval',
@@ -26,7 +30,7 @@ var config = {
     publicPath: publicPath,
     filename: 'bundle.js'
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [new webpack.HotModuleReplacementPlugin(), new ExtractTextPlugin('bundle.css')],
   module: {
     loaders: [
       // js bable
@@ -47,10 +51,11 @@ var config = {
       {test: /\.scss?$/i,   loader: 'style-loader!css-loader!postcss-loader!sass-loader', exculde: /node_modules/},
       // css post-css less
       {test: /\.less?$/i,   loader: 'style-loader!css-loader!postcss-loader!less-loader', exculde: /node_modules/}
+      // {test: /\.less?$/i,   loader: ExtractTextPlugin.extract('style-loader', '!css-loader!postcss-loader!less-loader'), exculde: /node_modules/}
     ]
   },
   postcss: function () {
-    return [autoprefixer, precss, postcssShort, pxtorem, postcssSorting, postcssCssnext, rucksackcss];
+    return [autoprefixer, precss, postcssShort, pxtorem, postcssSorting, postcssCssnext, rucksackcss, postcssCustomSelectors, postcssGrid];
   },
   closureLoader: {
     paths: [
@@ -61,20 +66,14 @@ var config = {
    }
 };
 
-
-
 new WebpackDevServer(webpack(config), {
   contentBase: './client',
   publicPath: publicPath,
   hot: true,
   historyApiFallback: true,
-  proxy: {
-   "*": "http://localhost:3000"
-  },
-  watchOptions: {
-    aggregateTimeout: 300,
-    poll: 1000
-  },
+  // proxy: {
+  //  "*": "http://localhost:3000"
+  // },
   stats: { colors: true },
 }).listen(port, 'localhost', function (err, result) {
   if (err) {

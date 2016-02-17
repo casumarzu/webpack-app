@@ -8,7 +8,7 @@ const style = {
 export class Buttons extends React.Component {
   render () {
     return (
-      <div>
+      <div className="RaisedButtons">
         <RaisedButton label="Default" style={style}/>
         <RaisedButton label="Primary" primary={true} style={style} />
         <RaisedButton label="Secondary" secondary={true} style={style} />

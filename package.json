@@ -27,7 +27,10 @@
     "jade": "^1.11.0",
     "jade-html-loader": "0.0.3",
     "precss": "^1.2.3",
-    "react": "^0.13.0"
+    "react": "^0.13.0",
+    "react-redux": "^4.4.0",
+    "redux": "^3.3.1",
+    "reset.css": "^2.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -50,12 +53,15 @@
     "less-loader": "^2.2.2",
     "node-sass": "^3.4.2",
     "postcss-cssnext": "^2.4.0",
+    "postcss-custom-selectors": "^3.0.0",
+    "postcss-grid": "^2.0.0",
     "postcss-loader": "^0.8.1",
     "postcss-pxtorem": "^3.3.1",
     "postcss-short": "^1.4.0",
     "postcss-sorting": "^1.2.0",
     "poststylus": "^0.2.3",
     "react-bootstrap": "^0.28.3",
+    "redux-devtools": "^3.1.1",
     "rucksack-css": "^0.8.5",
     "sass": "^0.5.0",
     "sass-loader": "^3.1.2",

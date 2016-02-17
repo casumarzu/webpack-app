@@ -1,6 +1,6 @@
 
-.sass-block{
-  $blue: blue;
-  background: $blue;
+:local(.scssBlock){
+  $color: blue;
+  background: $color;
   size: 100px;
 }

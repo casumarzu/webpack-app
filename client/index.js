@@ -1,4 +1,4 @@
 import React from 'react';
-import {Blocks} from './scripts/Blocks';
+import {App} from './scripts/app';
 
-React.render(<Blocks />, document.getElementById('root'));
+React.render(<App />, document.getElementById('root'));
