@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "node config"
+    "clean": "rimraf dist",
+    "start": "NODE_ENV=dev node config",
+    "build": "NODE_ENV=prod node config",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,8 @@
   "homepage": "https://github.com/casumarzu/webpack-app",
   "dependencies": {
     "autoprefixer": "^6.0.3",
+    "babel-polyfill": "^6.5.0",
+    "bootstrap-webpack": "0.0.5",
     "file-loader": "^0.8.5",
     "jade": "^1.11.0",
     "jade-html-loader": "0.0.3",
@@ -47,8 +52,11 @@
     "closure": "^1.0.3",
     "closure-loader": "^0.1.10",
     "coffee-jsx-loader": "^0.1.3",
+    "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
+    "cssnano": "^3.5.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.9.0",
     "less": "^2.6.0",
     "less-loader": "^2.2.2",
     "node-sass": "^3.4.2",
@@ -67,6 +75,7 @@
     "sass-loader": "^3.1.2",
     "styl": "^0.2.9",
     "style-loader": "^0.13.0",
+    "stylelint": "^4.3.5",
     "stylus": "^0.53.0",
     "stylus-loader": "^1.5.1",
     "ts-jsx-loader": "^0.2.1",
