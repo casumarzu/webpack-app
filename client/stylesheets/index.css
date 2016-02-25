@@ -14,7 +14,6 @@ html {
 #root {
   size: 100%;
   position: relative;
-  display: flex;
 }
 
 @custom-selector :--shit .shitClass;
@@ -24,9 +23,9 @@ html {
   size: 30px;
 }
 
-/*@custom-selector :--button button, .button;*/
+@custom-selector :--button button, .button;*/
 
-section {
+/*section {
   margin: auto;
   text: bold center uppercase black 1.25em 1.5 .05em;
   size: 600px 200px;
@@ -54,15 +53,15 @@ section {
     flex-flow: row wrap;
   }
 
-}
+}*/
 
 input::placeholder {
   color: grey;
 }
 
-:local(.block) {
+/*:local(.block) {
   background: color(blue alpha(-10%));
-}
+}*/
 
 /*input[type="range"]::thumb {
   background: red;

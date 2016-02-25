@@ -1,9 +1,14 @@
+var NODE_ENV = process.env.NODE_ENV;
+
 var path = require('path'),
     webpack = require('webpack'),
     WebpackDevServer = require('webpack-dev-server');
 
+var HtmlPlugin = require('html-webpack-plugin');
+
+
 var port = 8080,
-    publicPath = '/assets/';
+    publicPath = '';
 
 // Post-css
 var autoprefixer = require('autoprefixer'),
@@ -14,48 +19,141 @@ var autoprefixer = require('autoprefixer'),
     postcssCssnext = require('postcss-cssnext'),
     rucksackcss = require('rucksack-css'),
     postcssCustomSelectors = require('postcss-custom-selectors'),
-    postcssGrid = require('postcss-grid');
+    postcssGrid = require('postcss-grid'),
+    cssnano = require('cssnano'),
+    stylelint = require('stylelint');
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var config = {
-  devtool: 'eval',
-  entry: [
+var include = path.join(__dirname, '/client'),
+    exclude = /(node_modules)/;
+
+var jsLoader = function (loader, lang) {
+  var loaders = [loader];
+
+  if(NODE_ENV === 'dev') loaders = ['react-hot', loader];
+
+  return {
+    test: lang,
+    loaders: loaders,
+    include: include,
+    exculde: exclude
+  };
+}
+
+var fileLoader = function (loader, lang) {
+  if(NODE_ENV === 'dev'){
+
+  }
+  return {
+    test: lang,
+    loader: loader,
+    include: include,
+    exculde: exclude
+  };
+}
+
+var styleLoader = function (loader, lang) {
+  if(NODE_ENV === 'dev'){
+    loader = 'style-loader' + loader;
+  }else if(NODE_ENV === 'prod'){
+    loader = ExtractTextPlugin.extract('style-loader', loader);
+  }
+
+  return {
+    test: lang,
+    loader: loader,
+    include: include,
+    exculde: exclude
+  };
+}
+
+var babelLoader =   jsLoader('babel', /\.js$/);
+var coffeeLoader =  jsLoader('coffee-jsx-loader', /\.coffee$/);
+var tsLoader =      jsLoader('ts-loader!ts-jsx-loader', /\.ts$/);
+var closureLoader = jsLoader('closure-loader', /\.cljs$/);
+
+var jadeLoader = fileLoader('jade', /\.jade$/);
+
+var css = '!css-loader!postcss-loader';
+
+var cssLoader =  styleLoader(css, /\.css$/);
+var stylLoader = styleLoader(css + '!stylus-loader', /\.styl$/);
+var scssLoader = styleLoader(css + '!sass-loader', /\.scss$/);
+var lessLoader = styleLoader(css + '!less-loader', /\.less$/);
+
+var postcssArr = [
+  autoprefixer,
+  precss,
+  postcssShort,
+  postcssSorting,
+  postcssCssnext,
+  rucksackcss,
+  postcssCustomSelectors,
+  postcssGrid,
+  cssnano
+];
+
+if(NODE_ENV === 'dev'){
+  var plugins = [
+    new HtmlPlugin({
+      filename: 'index.html',
+      title: 'DEV APP',
+      template: './client/templates/index.jade',
+      // favicon: 'favicon.ico',
+      // chunks: ['client', 'vendors'],
+    }),
+    new ExtractTextPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.[hash].js')
+  ], entry = [
     'webpack-dev-server/client?http://localhost:' + port,
     'webpack/hot/only-dev-server',
     './client/index.js'
-  ],
+  ];
+}else if(NODE_ENV === 'prod'){
+  var plugins = [
+    new HtmlPlugin({
+      filename: 'index.html',
+      title: 'PROD APP',
+      template: './client/templates/index.jade',
+      // favicon: 'favicon.ico',
+      // chunks: ['client', 'vendors'],
+    }),
+    new ExtractTextPlugin('bundle.[hash].css'),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}})
+  ], entry = [
+    'webpack-dev-server/client?http://localhost:' + port,
+    './client/index.js'
+  ];
+}
+
+var config = {
+  devtool: 'eval',
+  entry: entry,
+  vendors: ['react'],
   output: {
-    path: path.resolve(__dirname, 'client'),
+    path: path.resolve(__dirname, '/dist'),
     publicPath: publicPath,
-    filename: 'bundle.js'
+    filename: 'bundle.[hash].js'
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new ExtractTextPlugin('bundle.css')],
+  plugins: plugins,
   module: {
     loaders: [
-      // js bable
-      {test: /\.js$/, loaders: ['react-hot', 'babel'], include: path.join(__dirname, '/client')},
-      // js coffeescript
-      {test: /\.coffee?$/i, loader: 'coffee-jsx-loader', exculde: /(node_modules)/},
-      // js typescript
-      {test: /\.ts?$/i,     loader: 'ts-loader!ts-jsx-loader', exculde: /(node_modules)/},
-      // js closurescript
-      {test: /\.cljs?$/i,   loader: 'closure-loader', exculde: /(node_modules)/},
-      // html jade
-      {test: /\.jade?$/i,   loader: 'jade', exculde: /node_modules/},
-      // css post-css
-      {test: /\.css?$/i,    loader: 'style-loader!css-loader!postcss-loader', exculde: /node_modules/},
-      // css post-css stylus
-      {test: /\.styl?$/i,   loader: 'style-loader!css-loader!postcss-loader!stylus-loader', exculde: /node_modules/},
-      // css post-css scss
-      {test: /\.scss?$/i,   loader: 'style-loader!css-loader!postcss-loader!sass-loader', exculde: /node_modules/},
-      // css post-css less
-      {test: /\.less?$/i,   loader: 'style-loader!css-loader!postcss-loader!less-loader', exculde: /node_modules/}
-      // {test: /\.less?$/i,   loader: ExtractTextPlugin.extract('style-loader', '!css-loader!postcss-loader!less-loader'), exculde: /node_modules/}
+      babelLoader,
+      coffeeLoader,
+      tsLoader,
+      closureLoader,
+      jadeLoader,
+      cssLoader,
+      stylLoader,
+      scssLoader,
+      lessLoader,
     ]
   },
   postcss: function () {
-    return [autoprefixer, precss, postcssShort, pxtorem, postcssSorting, postcssCssnext, rucksackcss, postcssCustomSelectors, postcssGrid];
+    return postcssArr;
   },
   closureLoader: {
     paths: [
