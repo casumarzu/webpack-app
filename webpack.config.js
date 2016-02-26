@@ -27,6 +27,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var include = path.join(__dirname, '/client'),
     exclude = /(node_modules)/;
 
+var imageLoader = {
+  test: /.jpe?g$|.gif$|.png$|.svg$|.woff$|.ttf$|.wav$|.mp3$/,
+  loaders: [
+    'file?hash=sha512&digest=hex&name=[name].[hash].[ext]',
+    'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+  ]
+}
+
 var jsLoader = function (loader, lang) {
   var loaders = [loader];
 
@@ -97,7 +105,7 @@ if(NODE_ENV === 'dev'){
       filename: 'index.html',
       title: 'DEV APP',
       template: './client/templates/index.jade',
-      // favicon: 'favicon.ico',
+      favicon: './client/favicon.ico',
       // chunks: ['client', 'vendors'],
     }),
     new ExtractTextPlugin(),
@@ -114,7 +122,7 @@ if(NODE_ENV === 'dev'){
       filename: 'index.html',
       title: 'PROD APP',
       template: './client/templates/index.jade',
-      // favicon: 'favicon.ico',
+      favicon: './client/favicon.ico',
       // chunks: ['client', 'vendors'],
     }),
     new ExtractTextPlugin('bundle.[hash].css', { allChunks: true }),
@@ -146,7 +154,7 @@ var config = {
       stylLoader,
       scssLoader,
       lessLoader,
-      { test: /.jpe?g$|.gif$|.png$|.svg$|.woff$|.ttf$|.wav$|.mp3$/,loader: require.resolve("file-loader") + "?name=[path][name].[ext]"}
+      imageLoader
     ]
   },
   postcss: function () {

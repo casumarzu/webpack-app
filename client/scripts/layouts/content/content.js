@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import pic from './../../../images/pic.jpg';
+import pic2 from './../../../images/1.png';
+console.log(pic);
 
 import style from './content.styl';
 // import {DatePickerBlock} from './../../widgets/datepicker/datepicker';
@@ -41,6 +44,8 @@ class List extends React.Component {
     var results = this.props.results;
     return (
       <div>
+        <img width="200" src={pic}/>
+        <img src={pic2}/>
         <Input type="text" />
         <button onClick={this.handleAdd}>Добавить</button>
         <ol>
