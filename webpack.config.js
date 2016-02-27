@@ -5,7 +5,6 @@ var path = require('path'),
 
 var HtmlPlugin = require('html-webpack-plugin');
 
-
 var port = 8080,
     publicPath = '';
 
@@ -126,6 +125,7 @@ if(NODE_ENV === 'dev'){
       // chunks: ['client', 'vendors'],
     }),
     new ExtractTextPlugin('bundle.[hash].css', { allChunks: true }),
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}})
   ], entry = './client/index.js';
