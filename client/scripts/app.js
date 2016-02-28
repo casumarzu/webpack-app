@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import {Header} from './layouts/header/header';
 import {Content} from './layouts/content/content';
 import {Footer} from './layouts/footer/footer';
-// import 'normalize.css';
-// import 'reset.css';
+// import 'style-loader!css-loader!normalize.css';
+import 'style-loader!css-loader!reset.css';
+// import 'style-loader!less-loader!bootstrap/less/bootstrap.less';
+
 import indexCss from './../stylesheets/index.css';
 
 const wait = (time) => {
@@ -26,6 +28,9 @@ wait(1000).then(()=> {
 }).then(()=> console.log('step 3!'));
 
 // import {Header, Content, Footer} from './layouts';
+
+import arrChange from './exp/arrChange';
+console.log(arrChange([1,2,3]))
 
 export class App extends React.Component {
   render () {

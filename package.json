@@ -4,7 +4,7 @@
   "description": "webpack app",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register ./client/*/**.test.js",
+    "test": "mocha --compilers js:babel-register './client/**/*.test.js'",
     "clean": "rimraf dist",
     "start": "npm run dev",
     "dev": "NODE_ENV=dev node server",
