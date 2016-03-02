@@ -81,3 +81,9 @@ input::placeholder {
     text: 20px 1;
   }
 }
+
+.b-nav {
+  width: 100%;
+  background: #fff;
+  text: #000 24px 1.5;
+}

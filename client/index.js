@@ -1,4 +1,4 @@
 import React from 'react';
-import {App} from './scripts/app';
-
+import { render } from 'react-dom';
+import { App } from './scripts/app';
 React.render(<App />, document.getElementById('root'));

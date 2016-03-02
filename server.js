@@ -8,9 +8,14 @@ new WebpackDevServer(webpack(config), {
   // publicPath: publicPath,
   hot: true,
   historyApiFallback: true,
-  // proxy: {
-  //  "*": "http://localhost:3000"
-  // },
+  proxy: {
+    '/api/*': {
+      target: 'http://localhost:3000/api/',
+      rewrite: function(req) {
+        req.url = req.url.replace(/^\/api/, '');
+      }
+    }
+  },
   stats: { colors: true }
 }).listen(port, 'localhost', function (err, result) {
   if (err) {

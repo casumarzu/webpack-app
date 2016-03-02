@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import pic from './../../../images/pic.jpg';
+import pic from  './../../../images/pic.jpg';
 import pic2 from './../../../images/1.png';
 console.log(pic);
 
@@ -69,11 +69,11 @@ var results = [
 export class Content extends React.Component {
   render () {
     return (
-      <main className={style.Content}>
+      <div className={style.Content}>
         <Input placeholder="hello"/>
         <List results={results} />
         <Example/>
-      </main>
+      </div>
     )
   }
 }

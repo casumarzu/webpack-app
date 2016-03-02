@@ -8,6 +8,7 @@
     "clean": "rimraf dist",
     "start": "npm run dev",
     "dev": "NODE_ENV=dev node server",
+    "dev:config": "NODE_ENV=dev nodemon --debug server",
     "prod": "npm run clean && NODE_ENV=prod webpack --progress --colors && live-server dist"
   },
   "repository": {
@@ -26,11 +27,13 @@
   "homepage": "https://github.com/casumarzu/webpack-app",
   "dependencies": {
     "bootstrap-webpack": "0.0.5",
+    "jquery": "^2.2.1",
     "node-reset-scss": "^1.0.1",
     "normalize.css": "^3.0.3",
     "react": "^0.13.0",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
+    "react-router": "^2.0.0",
     "redux": "^3.3.1",
     "reset.css": "^2.0.2"
   },
@@ -59,6 +62,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.9.0",
+    "http-proxy": "^1.13.2",
     "image-webpack-loader": "^1.6.3",
     "jade": "^1.11.0",
     "jade-html-loader": "0.0.3",
