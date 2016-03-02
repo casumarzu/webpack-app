@@ -8,8 +8,8 @@ import {Header} from './layouts/header/header';
 import {Content} from './layouts/content/content';
 import {Footer} from './layouts/footer/footer';
 // import 'style-loader!css-loader!normalize.css';
-import 'style-loader!css-loader!reset.css';
-// import 'style-loader!less-loader!bootstrap/less/bootstrap.less';
+import 'reset.css';
+import 'bootstrap/less/bootstrap.less';
 
 import indexCss from './../stylesheets/index.css';
 

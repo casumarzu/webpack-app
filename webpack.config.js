@@ -27,7 +27,7 @@ var include = path.join(__dirname, '/client'),
     exclude = /(node_modules)/;
 
 var imageLoader = {
-  test: /.jpe?g$|.gif$|.png$|.svg$|.woff$|.ttf$|.wav$|.mp3$/,
+  test: /.jpe?g$|.gif$|.png$|.svg$|.woff$|.woff2$|.ttf$|.eot$|.wav$|.mp3$/,
   loaders: [
     'file?hash=sha512&digest=hex&name=[name].[hash].[ext]',
     'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
@@ -66,9 +66,9 @@ var styleLoader = function (loader, lang) {
 
   return {
     test: lang,
-    loader: loader,
-    include: include,
-    exculde: exclude
+    loader: loader
+    // include: include,
+    // exculde: exclude
   };
 }
 
@@ -140,7 +140,7 @@ var config = {
     filename: 'bundle.[hash].js'
   },
   resolve: {
-    extensions: ['', '.js', '.css']
+    extensions: ['', '.js', '.css', '.scss', '.less', '.json', '.eot']
   },
   plugins: plugins,
   module: {
