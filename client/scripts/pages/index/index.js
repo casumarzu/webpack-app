@@ -3,11 +3,14 @@ import * as bootstrap from "react-bootstrap";
 import { Button, Jumbotron, Table } from 'react-bootstrap';
 import style from './style.styl';
 
+import pic2 from './../../../images/1.png';
+
 export class Index extends React.Component {
   render() {
     return (
       <Jumbotron>
         <h1>Index Page</h1>
+        <img src={pic2}/>
         <p>This is a simple hero unit, a simple
            jumbotron-style component for calling
             extra attention to featured
