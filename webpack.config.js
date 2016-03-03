@@ -142,10 +142,15 @@ var config = {
   resolve: {
     extensions: ['', '.js', '.css', '.scss', '.less', '.json', '.eot'],
     alias: {
+      Root: path.resolve( __dirname, 'client' ),
       Images: path.resolve( __dirname, 'client', 'images' ),
       Layout: path.resolve( __dirname, 'client', 'scipts', 'loyouts' ),
+      Widget: path.resolve( __dirname, 'client', 'scripts', 'widgets' ),
       Page: path.resolve( __dirname, 'client', 'scripts', 'pages' ),
-      Exp: path.resolve( __dirname, 'client', 'scripts', 'exp' )
+      Util: path.resolve( __dirname, 'client', 'scripts', 'utils' ),
+      Exp: path.resolve( __dirname, 'client', 'scripts', 'exp' ),
+      Style: path.resolve( __dirname, 'client', 'stylesheets' ),
+      Tmpl: path.resolve( __dirname, 'client', 'templates' )
     }
   },
   plugins: plugins,
