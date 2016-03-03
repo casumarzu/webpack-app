@@ -72,7 +72,7 @@ var styleLoader = function (loader, lang) {
   };
 }
 
-var babelLoader =   jsLoader('babel', /\.js?$/);
+var babelLoader =   jsLoader('babel', /\.js?$|\.jsx?$/);
 var coffeeLoader =  jsLoader('coffee-jsx-loader', /\.coffee?$/);
 var tsLoader =      jsLoader('ts-loader!ts-jsx-loader', /\.ts?$/);
 var closureLoader = jsLoader('closure-loader', /\.cljs?$/);

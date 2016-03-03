@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import style from './footer.styl';
+import * as bootstrap from "react-bootstrap";
+import { Navbar } from 'react-bootstrap';
 
 export class Footer extends React.Component {
   render () {
     return (
-      <footer className={style.Footer}>
-        <h1>Footer</h1>
+      <footer className="footer">
+        <div className="container">
+          <p className="text-muted">Footer</p>
+        </div>
       </footer>
     )
   }

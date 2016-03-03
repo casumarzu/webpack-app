@@ -1,5 +1,4 @@
 import * as bootstrap from "react-bootstrap";
-console.log( bootstrap );
 import { Button } from 'react-bootstrap';
 const buttonsInstance = (
   <div>

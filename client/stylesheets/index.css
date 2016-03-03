@@ -1,3 +1,4 @@
+
 :root {
   --mainColor: #1D1746;
 }
@@ -7,83 +8,26 @@ body {
 }
 html {
   size: 100%;
-  background: var(--mainColor);
-  text: 10px 1.5;
+  /*background: var(--mainColor);*/
+  min-width: 340px;
 }
 
-#root {
-  size: 100%;
+/*#root {
   position: relative;
-}
-
-@custom-selector :--shit .shitClass;
-
-:--shit {
-  background: brown;
-  size: 30px;
-}
-
-@custom-selector :--button button, .button;*/
-
-/*section {
-  margin: auto;
-  text: bold center uppercase black 1.25em 1.5 .05em;
-  size: 600px 200px;
-  background: #CA0C57;
-  color: color(black alpha(-10%));
-  display: flex;
-  justify-content: space-around;;
-  align-items: center;
-  flex-flow: row wrap;
-  box-shadow: 10px 10px 10px rgba(0,0,0, .5);
-
-  .block {
-    transition: all .6s ease;
-    &:hover {
-      transform: rotate(360deg);
-      cursor: pointer;
-    }
-  }
-
-  .RaisedButtons {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;;
-    align-items: flex-end;
-    flex-flow: row wrap;
-  }
-
 }*/
 
-input::placeholder {
-  color: grey;
-}
-
-/*:local(.block) {
-  background: color(blue alpha(-10%));
-}*/
-
-/*input[type="range"]::thumb {
-  background: red;
-}*/
+/*@custom-selector :--button button, .button;*/
 
 :local(.Wrapper) {
+  /*width: 1000px;*/
+  margin: 0 auto;
+}
+
+/*:local(.FlexWrapper) {
   size: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-end;
   min-height: 600px;
-}
-
-@media (max-width: 400px) {
-  html {
-    text: 20px 1;
-  }
-}
-
-.b-nav {
-  width: 100%;
-  background: #fff;
-  text: #000 24px 1.5;
-}
+}*/

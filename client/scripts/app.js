@@ -1,39 +1,83 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
-import _ from 'lodash';
-
 import { Router, Route, IndexRoute, Link, IndexLink, browserHistory } from 'react-router';
 
 import {Header} from './layouts/header/header';
 import {Content} from './layouts/content/content';
 import {Footer} from './layouts/footer/footer';
-// import 'style-loader!css-loader!normalize.css';
-import 'reset.css';
+
+import {Index} from './pages/index';
+import {About} from './pages/about';
+import {Contacts} from './pages/contacts';
+import {Portfolio} from './pages/portfolio';
+import {Users} from './pages/users';
+import {UsersIndex} from './pages/usersIndex';
+import {User} from './pages/user';
+
 import 'bootstrap/less/bootstrap.less';
 
-import indexCss from './../stylesheets/index.css';
+// // Core variables and mixins
+// import 'bootstrap/less/variables.less';
+// import 'bootstrap/less/mixins.less';
+//
+// // Reset and dependencies
+// import 'bootstrap/less/normalize.less';
+// import 'bootstrap/less/print.less';
+// import 'bootstrap/less/glyphicons.less';
+//
+// // Core CSS
+// import 'bootstrap/less/scaffolding.less';
+// import 'bootstrap/less/type.less';
+// import 'bootstrap/less/code.less';
+// import 'bootstrap/less/grid.less';
+// import 'bootstrap/less/tables.less';
+// import 'bootstrap/less/forms.less';
+// import 'bootstrap/less/buttons.less';
+//
+// // Components
+// import 'bootstrap/less/component-animations.less';
+// import 'bootstrap/less/dropdowns.less';
+// import 'bootstrap/less/button-groups.less';
+// import 'bootstrap/less/input-groups.less';
+// import 'bootstrap/less/navs.less';
+// import 'bootstrap/less/navbar.less';
+// import 'bootstrap/less/breadcrumbs.less';
+// import 'bootstrap/less/pagination.less';
+// import 'bootstrap/less/pager.less';
+// import 'bootstrap/less/labels.less';
+// import 'bootstrap/less/badges.less';
+// import 'bootstrap/less/jumbotron.less';
+// import 'bootstrap/less/thumbnails.less';
+// import 'bootstrap/less/alerts.less';
+// import 'bootstrap/less/progress-bars.less';
+// import 'bootstrap/less/media.less';
+// import 'bootstrap/less/list-group.less';
+// import 'bootstrap/less/panels.less';
+// import 'bootstrap/less/responsive-embed.less';
+// import 'bootstrap/less/wells.less';
+// import 'bootstrap/less/close.less';
+//
+// // Components w/ JavaScript
+// import 'bootstrap/less/modals.less';
+// import 'bootstrap/less/tooltip.less';
+// import 'bootstrap/less/popovers.less';
+// import 'bootstrap/less/carousel.less';
+//
+// // Utility classes
+// import 'bootstrap/less/utilities.less';
+// import 'bootstrap/less/responsive-utilities.less';
 
-const ACTIVE = { color: 'red' };
+
+
+
+
+import index from './../stylesheets/index.css';
 
 class Root extends React.Component {
   render() {
     return (
-      <div>
+      <div className={index.Wrapper}>
         <Header/>
-        <h1>APP!</h1>
-        <ul className="b-nav">
-          <li><Link to="/"activeStyle={ACTIVE}>/</Link></li>
-          <li><IndexLink to="/" activeStyle={ACTIVE}>/ IndexLink</IndexLink></li>
-
-          <li><Link to="/users" activeStyle={ACTIVE}>/users</Link></li>
-          <li><IndexLink to="/users" activeStyle={ACTIVE}>/users IndexLink</IndexLink></li>
-
-          <li><Link to="/users/ryan" activeStyle={ACTIVE}>/users/ryan</Link></li>
-          <li><Link to={{ pathname: '/users/ryan', query: { foo: 'bar' } }} activeStyle={ACTIVE}>/users/ryan?foo=bar</Link></li>
-
-          <li><Link to="/about" activeStyle={ACTIVE}>/about</Link></li>
-        </ul>
-        <div className={indexCss.Wrapper}>
+        <div className="container">
           {this.props.children}
         </div>
         <Footer/>
@@ -42,70 +86,6 @@ class Root extends React.Component {
   }
 }
 
-class Index extends React.Component {
-  render() {
-    return (
-      <div className={indexCss.Wrapper}>
-        <h2>Index!</h2>
-        <Content/>
-      </div>
-    )
-  }
-}
-
-class Users extends React.Component {
-  render() {
-    return (
-      <div>
-        <h2>Users</h2>
-        {this.props.children}
-      </div>
-    )
-  }
-}
-
-class UsersIndex extends React.Component {
-  render() {
-    return (
-      <div>
-        <h3>UsersIndex</h3>
-      </div>
-    )
-  }
-}
-
-class User extends React.Component {
-  render() {
-    return (
-      <div>
-        <h3>User {this.props.params.id}</h3>
-      </div>
-    )
-  }
-}
-
-class About extends React.Component {
-  render() {
-    return (
-      <div>
-        <h2>About</h2>
-      </div>
-    )
-  }
-}
-
-// export class App extends React.Component {
-//   render () {
-//     return (
-//       <div className={indexCss.Wrapper}>
-//         <Header/>
-//         <Content/>
-//         <Footer/>
-//       </div>
-//     )
-//   }
-// }
-
 export class App extends React.Component {
   render () {
     return (
@@ -113,6 +93,8 @@ export class App extends React.Component {
         <Route path="/" component={Root}>
           <IndexRoute component={Index}/>
           <Route path="/about" component={About}/>
+          <Route path="/contacts" component={Contacts}/>
+          <Route path="/portfolio" component={Portfolio}/>
           <Route path="users" component={Users}>
             <IndexRoute component={UsersIndex}/>
             <Route path=":id" component={User}/>
@@ -122,25 +104,3 @@ export class App extends React.Component {
     )
   }
 }
-
-
-$.ajax({
-  url: '/api/v1/tasks.json',
-  type: 'GET',
-  data: {
-    private_token: 'DHPAmq8LLcNhbGsZHYyf'
-  }
-})
-.done(
-  (data)=> {
-    var results = [];
-    data.forEach((task)=> {
-      console.info(_.pick(task, ['id','name']))
-      results.push(_.pick(task, ['id','name']))
-    })
-    return results;
-  })
-.fail(
-  (data)=> {
-    console.error(data)
-  });
