@@ -140,7 +140,13 @@ var config = {
     filename: 'bundle.[hash].js'
   },
   resolve: {
-    extensions: ['', '.js', '.css', '.scss', '.less', '.json', '.eot']
+    extensions: ['', '.js', '.css', '.scss', '.less', '.json', '.eot'],
+    alias: {
+      Images: path.resolve( __dirname, 'client', 'images' ),
+      Layout: path.resolve( __dirname, 'client', 'scipts', 'loyouts' ),
+      Page: path.resolve( __dirname, 'client', 'scripts', 'pages' ),
+      Exp: path.resolve( __dirname, 'client', 'scripts', 'exp' )
+    }
   },
   plugins: plugins,
   module: {
