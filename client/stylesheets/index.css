@@ -12,22 +12,21 @@ html {
   min-width: 340px;
 }
 
-/*#root {
+#root {
   position: relative;
-}*/
+}
 
-/*@custom-selector :--button button, .button;*/
+@custom-selector :--button button, .button;
 
 :local(.Wrapper) {
-  /*width: 1000px;*/
   margin: 0 auto;
 }
 
-/*:local(.FlexWrapper) {
+:local(.FlexWrapper) {
   size: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-end;
   min-height: 600px;
-}*/
+}
