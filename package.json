@@ -11,7 +11,7 @@
     "dev:config": "NODE_ENV=dev nodemon --debug server",
     "prod": "npm run clean && NODE_ENV=prod webpack --progress --colors",
     "server": "node --harmony server",
-    "deploy": "git push heroku master && heroku ps:scale web=1"
+    "deploy": "git push heroku && heroku ps:scale web=1"
   },
   "repository": {
     "type": "git",
