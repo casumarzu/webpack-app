@@ -13,22 +13,11 @@ const jade = new Jade({
   viewPath: path.join(__dirname, 'server', 'views'),
   debug: true,
   pretty: true,
-  compileDebug: true,
-  // basedir: 'path/for/jade/extends',
-  // helperPath: [
-  //   'path/to/jade/helpers',
-  //   { random: 'path/to/lib/random.js' },
-  //   { _: require('lodash') }
-  // ],
-  // app: app // equals to jade.use(app) and app.use(jade.middleware)
+  compileDebug: true
 })
 
 app.use(jade.middleware);
 app.use(serve(path.join(__dirname, 'dist')));
-
-// app.use(router.get('/', function* () {
-//   this.render('index');
-// }));
 
 app.use(router.get('/foo', function* () {
   this.body = 'foo';
