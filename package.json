@@ -9,7 +9,8 @@
     "start": "npm run dev",
     "dev": "NODE_ENV=dev node server",
     "dev:config": "NODE_ENV=dev nodemon --debug server",
-    "prod": "npm run clean && NODE_ENV=prod webpack --progress --colors && live-server dist"
+    "prod": "npm run clean && NODE_ENV=prod webpack --progress --colors && live-server dist",
+    "deploy": "git push heroku master && heroku ps:scale web=1"
   },
   "repository": {
     "type": "git",
