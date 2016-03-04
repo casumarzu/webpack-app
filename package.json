@@ -27,7 +27,7 @@
     "url": "https://github.com/casumarzu/webpack-app/issues"
   },
   "homepage": "https://github.com/casumarzu/webpack-app",
-  "devDependencies": {
+  "dependencies": {
     "autoprefixer": "^6.0.3",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.5.2",
