@@ -1,0 +1,8 @@
+{
+  "name": "Webpack App",
+  "description": "js, jsx, coffee, typescript, css, scss, stylus, less, jade",
+  "repository": "https://github.com/casumarzu/webpack-app.git",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "webpack", "front-end"],
+  "image": "heroku/webpack"
+}
