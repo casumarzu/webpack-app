@@ -29,7 +29,7 @@ var include = path.join(__dirname, '/client'),
 var imageLoader = {
   test: /.jpe?g$|.gif$|.png$|.svg$|.woff$|.woff2$|.ttf$|.eot$|.wav$|.mp3$/,
   loaders: [
-    'file?hash=sha512&digest=hex&name=[name].[hash].[ext]',
+    'file?hash=sha512&digest=hex&name=[name].[ext]',
     'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
   ]
 }
@@ -109,7 +109,7 @@ if(NODE_ENV === 'dev'){
     }),
     new ExtractTextPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.[hash].js')
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
   ], entry = [
     'webpack-dev-server/client?http://localhost:' + port,
     'webpack/hot/only-dev-server',
@@ -124,7 +124,7 @@ if(NODE_ENV === 'dev'){
       favicon: './client/favicon.ico',
       // chunks: ['client', 'vendors'],
     }),
-    new ExtractTextPlugin('bundle.[hash].css', { allChunks: true }),
+    new ExtractTextPlugin('bundle.css', { allChunks: true }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}})
@@ -137,7 +137,7 @@ var config = {
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: publicPath,
-    filename: 'bundle.[hash].js'
+    filename: 'bundle.js'
   },
   resolve: {
     extensions: ['', '.js', '.css', '.scss', '.less', '.json', '.eot'],
