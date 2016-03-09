@@ -1,26 +1,32 @@
-var webpack = require('webpack'),
-    config = require('./webpack.config'),
-    port = 8080,
-    WebpackDevServer = require('webpack-dev-server');
+const koa = require('koa');
+const serve = require('koa-static');
+const router = require('koa-route');
+const vhost = require('koa-vhost');
+const path = require('path');
+const _ = require('lodash');
+const port = process.env.PORT || 5000;
 
-new WebpackDevServer(webpack(config), {
-  contentBase: './client',
-  // publicPath: publicPath,
-  hot: true,
-  historyApiFallback: true,
-  proxy: {
-    '/api/*': {
-      target: 'http://localhost:3000/api/',
-      rewrite: function(req) {
-        req.url = req.url.replace(/^\/api/, '');
-      }
-    }
-  },
-  stats: { colors: true }
-}).listen(port, 'localhost', function (err, result) {
-  if (err) {
-    console.log(err);
-  }
+const app = koa();
 
-  console.log('Listening at localhost:' + port);
+const Jade = require('koa-jade');
+const jade = new Jade({
+  viewPath: path.join(__dirname, 'server', 'views'),
+  debug: true,
+  pretty: true,
+  compileDebug: true
+})
+
+app.use(jade.middleware);
+app.use(serve(path.join(__dirname, 'dist')));
+
+app.use(router.get('/foo', function* () {
+  this.body = 'foo';
+}));
+
+app.use(router.get('/bar', function* () {
+  this.body = 'bar';
+}));
+
+app.listen(port, function() {
+  console.log('server listening port: ' + port);
 });
