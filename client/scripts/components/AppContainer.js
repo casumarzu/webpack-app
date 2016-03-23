@@ -2,6 +2,9 @@ import React from 'react';
 import TodoStore from '../stores/TodoStore';
 import ActionCreator from '../actions/TodoActionCreators';
 import App from './App';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 
 export default React.createClass({
   _onChange() {
