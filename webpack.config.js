@@ -5,7 +5,7 @@ var path = require('path'),
 
 var HtmlPlugin = require('html-webpack-plugin');
 
-var NpmInstallPlugin = require('npm-install-webpack-plugin')
+var NpmInstallPlugin = require('npm-install-webpack-plugin');
 
 var port = 8080,
     publicPath = '';
@@ -116,7 +116,8 @@ if(NODE_ENV === 'dev'){
   ], entry = [
     'webpack-dev-server/client?http://localhost:' + port,
     'webpack/hot/only-dev-server',
-    './client/index.js'
+    'babel-polyfill',
+    './client/scripts/index.js'
   ];
 }else if(NODE_ENV === 'prod'){
   var plugins = [
@@ -133,7 +134,7 @@ if(NODE_ENV === 'dev'){
     new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}}),
     new NpmInstallPlugin(),
     new webpack.noErrorsPlugin()
-  ], entry = './client/index.js';
+  ], entry = ['babel-polyfill','./client/scripts/index.js'];
 }
 
 var config = {
