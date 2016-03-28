@@ -5,6 +5,8 @@ var path = require('path'),
 
 var HtmlPlugin = require('html-webpack-plugin');
 
+var NpmInstallPlugin = require('npm-install-webpack-plugin')
+
 var port = 8080,
     publicPath = '';
 
@@ -108,6 +110,7 @@ if(NODE_ENV === 'dev'){
       // chunks: ['client', 'vendors'],
     }),
     new ExtractTextPlugin(),
+    new NpmInstallPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.[hash].js')
   ], entry = [
@@ -127,11 +130,14 @@ if(NODE_ENV === 'dev'){
     new ExtractTextPlugin('bundle.[hash].css', { allChunks: true }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}})
+    new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}}),
+    new NpmInstallPlugin(),
+    new webpack.noErrorsPlugin()
   ], entry = './client/index.js';
 }
 
 var config = {
+  devtool: 'cheap-module-eval-source-map',
   entry: entry,
   vendors: ['react', 'reset.css'],
   output: {
