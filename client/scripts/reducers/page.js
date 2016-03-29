@@ -6,7 +6,7 @@ import {
 const initialState = {
   year: 2016,
   photos: [],
-  fetching: false,
+  fetching: false
 }
 
 export default function page(state = initialState, action) {

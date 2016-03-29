@@ -10,11 +10,11 @@ export function getPhotos(year) {
       type: GET_PHOTOS_REQUEST,
       payload: year
     })
-    setTimeout(() => {
-      dispatch({
-        type: GET_PHOTOS_SUCCESS,
-        payload: year
-      })
-    }, 1500)
+    // setTimeout(() => {
+    //   dispatch({
+    //     type: GET_PHOTOS_SUCCESS,
+    //     payload: year
+    //   })
+    // }, 1500)
   }
 }

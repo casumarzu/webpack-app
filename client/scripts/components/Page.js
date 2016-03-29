@@ -13,11 +13,7 @@ export default class Page extends Component {
         <button onClick={::this.onYearBtnClick}>2014</button>
         <h3>{year} </h3>
         {
-          fetching ?
-          <p>Загрузка...</p>
-          :
-          <p>У тебя {photos.length} фото за {year} год.</p>
-
+          fetching ? <p>Загрузка...</p> : <p>У тебя {photos.length} фото за {year} год. </p>
         }
       </div>
     )
@@ -27,6 +23,6 @@ export default class Page extends Component {
 Page.propTypes = {
   year: PropTypes.number.isRequired,
   photos: PropTypes.array.isRequired,
-  fetching: PropTypes.any.isRequired,
+  fetching: PropTypes.bool.isRequired,
   getPhotos: PropTypes.func.isRequired
 }
