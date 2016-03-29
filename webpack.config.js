@@ -74,16 +74,16 @@ var styleLoader = function (loader, lang) {
   };
 }
 
-var babelLoader =   jsLoader('babel', /\.js?$|\.jsx?$/);
-var coffeeLoader =  jsLoader('coffee-jsx-loader', /\.coffee?$/);
-var tsLoader =      jsLoader('ts-loader!ts-jsx-loader', /\.ts?$/);
+var babelLoader   = jsLoader('babel-loader', /\.js?$|\.jsx?$/);
+var coffeeLoader  = jsLoader('coffee-jsx-loader', /\.coffee?$/);
+var tsLoader      = jsLoader('ts-loader!ts-jsx-loader', /\.ts?$/);
 var closureLoader = jsLoader('closure-loader', /\.cljs?$/);
 
 var jadeLoader = fileLoader('jade', /\.jade?$/);
 
 var css = '!css-loader!postcss-loader';
 
-var cssLoader =  styleLoader(css, /\.css?$/);
+var cssLoader  = styleLoader(css, /\.css?$/);
 var stylLoader = styleLoader(css + '!stylus-loader', /\.styl?$/);
 var scssLoader = styleLoader(css + '!sass-loader', /\.scss$/);
 var lessLoader = styleLoader(css + '!less-loader', /\.less?$/);
@@ -162,6 +162,15 @@ var config = {
   },
   plugins: plugins,
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loaders: ['eslint'],
+        include: [
+          path.resolve(__dirname, './client'),
+        ],
+      }
+    ],
     loaders: [
       babelLoader,
       coffeeLoader,

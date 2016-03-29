@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 
 export default class User extends Component {
-  render (){
+  render() {
     const { name } = this.props
     return (
       <div>

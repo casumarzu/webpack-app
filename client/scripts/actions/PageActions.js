@@ -3,17 +3,17 @@ import {
   GET_PHOTOS_SUCCESS
 } from '../constants/Page'
 
-export function getPhotos (year) {
+export function getPhotos(year) {
 
   return (dispatch) => {
     dispatch({
       type: GET_PHOTOS_REQUEST,
       payload: year
     })
-    setTimeout( () => {
+    setTimeout(() => {
       dispatch({
         type: GET_PHOTOS_SUCCESS,
-        payload: 3000
+        payload: year
       })
     }, 1500)
   }

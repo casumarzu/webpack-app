@@ -6,15 +6,15 @@ import {
 const initialState = {
   year: 2016,
   photos: [],
-  fetching: false
+  fetching: false,
 }
 
 export default function page(state = initialState, action) {
   switch (action.type) {
     case GET_PHOTOS_REQUEST:
-      return {...state, year: action.payload, fetching: true}
+      return { ...state, year: action.payload, fetching: true }
     case GET_PHOTOS_SUCCESS:
-      return {...state, year: action.payload, fetching: false}
+      return { ...state, year: action.payload, fetching: false }
     default:
       return state;
   }
