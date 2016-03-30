@@ -133,7 +133,7 @@ if(NODE_ENV === 'dev'){
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}}),
     new NpmInstallPlugin(),
-    new webpack.noErrorsPlugin()
+    // new webpack.noErrorsPlugin()
   ], entry = ['babel-polyfill','./client/scripts/index.js'];
 }
 

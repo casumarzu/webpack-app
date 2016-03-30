@@ -1,20 +1,7 @@
 import { ADD_ITEM } from '../constants/TodoList.Constants'
 
 const initialState = {
-  list: [
-    {
-      name: 'fake task 1',
-      checked: false
-    },
-    {
-      name: 'fake task 2',
-      checked: false
-    },
-    {
-      name: 'fake task 3',
-      checked: false
-    }
-  ]
+  list: []
 }
 
 export default function addItem(state = initialState, action) {
