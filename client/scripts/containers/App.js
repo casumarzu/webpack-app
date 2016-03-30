@@ -29,7 +29,7 @@ App.propTypes = {
   incrementActions: PropTypes.shape({
     increment: PropTypes.func.isRequired
   }),
-  todoList: PropTypes.array.isRequired,
+  todoList: PropTypes.object.isRequired,
   todoListActions: PropTypes.shape({
     addItem: PropTypes.func.isRequired
   }),

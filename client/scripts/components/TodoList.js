@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import _ from 'lodash'
 
 export default class TodoList extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class TodoList extends Component {
 
     const { list } = this.props
     list.push({
+      id: _.uniqueId(),
       name: this.state.value,
       checked: false
     })
@@ -30,7 +32,7 @@ export default class TodoList extends Component {
 
     const todoListView = list.map((task) => {
       return (
-        <div className="todo-list__item">{task.name}</div>
+        <div className="todo-list__item">{ task.name }</div>
       )
     })
 
