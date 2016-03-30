@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux'
-import page from './page'
-import user from './user'
-import incrementer from './incrementer'
+import incrementer from './Incrementer.Reducer'
+import todoList from './TodoList.Reducer'
 
 export default combineReducers({
-  page, user, incrementer
+  incrementer, todoList
 })

@@ -1,4 +1,4 @@
-import { INCREMENT_ITEM } from '../constants/Incrementer'
+import { INCREMENT_ITEM } from '../constants/Incrementer.Constants'
 
 export function increment(count) {
   return (dispatch) => {
