@@ -6,17 +6,19 @@ import Incrementer from '../components/Incrementer'
 import TodoList from '../components/TodoList'
 import * as incrementActions from '../actions/Increment.Actions'
 import * as todoListActions from '../actions/TodoList.Actions'
+// import { GridList, GridTile } from 'material-ui'
 
 class App extends Component {
   render() {
     const { incrementer, todoList } = this.props
     const { increment } = this.props.incrementActions
 
-    const { addItem } = this.props.todoListActions
+    const { addItem, checkItem } = this.props.todoListActions
 
     return (
-      <div className="wrapper">
-        <TodoList list={ todoList.list } addItem={ addItem } />
+      <div className="Wrapper">
+        {/*<GridList cols={2} padding={1}></GridList>*/}
+        <TodoList list={ todoList.list } addItem={ addItem } checkItem={ checkItem } />
         <Incrementer count={incrementer.count} getIncrement={increment} />
         <Counter />
       </div>
@@ -31,7 +33,8 @@ App.propTypes = {
   }),
   todoList: PropTypes.object.isRequired,
   todoListActions: PropTypes.shape({
-    addItem: PropTypes.func.isRequired
+    addItem: PropTypes.func.isRequired,
+    checkItem: PropTypes.func.isRequired
   }),
 }
 
