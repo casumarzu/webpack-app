@@ -7,7 +7,6 @@ import * as todoListActions from '../actions/TodoList.Actions'
 export default class TodoList extends Component {
   handleCheck(e) {
     const { checked } = e.target
-    console.log(checked);
     this.props.checkItem(this.props.list, this.props.id)
   }
 
