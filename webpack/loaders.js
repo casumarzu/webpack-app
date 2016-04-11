@@ -1,10 +1,6 @@
 var NODE_ENV = process.env.NODE_ENV;
 
-var port = 8080,
-    publicPath = '';
-
 var path = require('path'),
-    fs = require('fs'),
     webpack = require('webpack');
 
 

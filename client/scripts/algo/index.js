@@ -12,13 +12,15 @@ export function binarySearch(searchKey, entryArr) {
       i = k + 1
     }
   }
+  let result;
   if(entryArr[i] === searchKey) {
     console.timeEnd('binarySearch')
-    return i
+    result = i
   }else {
     console.timeEnd('binarySearch')
-    return -1
+    result = -1
   }
+  return result
 }
 
 export function linearSearch(t, A) {
@@ -29,13 +31,15 @@ export function linearSearch(t, A) {
   while (A[i] !== t) {
     i++
   }
+  let result
   if (i < n) {
     console.timeEnd('linearSearch')
-    return i
+    result = i
   }else {
     console.timeEnd('linearSearch')
-    return -1
+    result = -1
   }
+  return result
 }
 
 export function SubstringSearch(sub, str) {

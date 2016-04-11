@@ -1,8 +1,3 @@
-var NODE_ENV = process.env.NODE_ENV;
-
-var port = 8080,
-    publicPath = '';
-
 var path = require('path'),
     webpack = require('webpack');
 
@@ -17,7 +12,7 @@ var config = {
   vendors: ['react', 'reset.css'],
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: publicPath,
+    publicPath: '',
     filename: 'bundle.[hash].js'
   },
   resolve: {
@@ -37,13 +32,7 @@ var config = {
   plugins: plugins,
   module: {
     preLoaders: [
-      {
-        test: /\.js$/,
-        loaders: ['eslint'],
-        include: [
-          path.resolve(__dirname, './client'),
-        ],
-      }
+      { test: /\.js$/,loaders: ['eslint'],include: [ path.resolve(__dirname, './client') ]}
     ],
     loaders: loaders
   },
