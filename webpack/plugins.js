@@ -1,17 +1,9 @@
 var NODE_ENV = process.env.NODE_ENV;
-
-var port = 8080;
-
-var path = require('path'),
-    webpack = require('webpack');
-
+var webpack = require('webpack');
 var HtmlPlugin = require('html-webpack-plugin');
-
 var NpmInstallPlugin = require('npm-install-webpack-plugin');
-
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-var plugins, entry;
+var plugins;
 
 if(NODE_ENV === 'dev'){
   plugins = [
@@ -26,11 +18,6 @@ if(NODE_ENV === 'dev'){
     new NpmInstallPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.[hash].js')
-  ], entry = [
-    'webpack-dev-server/client?http://localhost:' + port,
-    'webpack/hot/only-dev-server',
-    'babel-polyfill',
-    './client/scripts/index.js'
   ];
 }else if(NODE_ENV === 'prod'){
   plugins = [
@@ -47,8 +34,7 @@ if(NODE_ENV === 'dev'){
     new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}}),
     new NpmInstallPlugin(),
     // new webpack.noErrorsPlugin()
-  ], entry = ['babel-polyfill','./client/scripts/index.js'];
+  ];
 }
 
-module.exports.plugins = plugins;
-module.exports.entry = entry;
+module.exports = plugins;
