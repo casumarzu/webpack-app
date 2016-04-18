@@ -5,7 +5,6 @@ var webpack = require('webpack'),
 
 new WebpackDevServer(webpack(config), {
   contentBase: './client',
-  // publicPath: publicPath,
   hot: true,
   historyApiFallback: true,
   proxy: {

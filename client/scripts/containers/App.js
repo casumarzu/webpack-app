@@ -57,18 +57,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
-
-import { binarySearch, linearSearch } from '../algo'
-
-const arr = [],
-      max = 1000 * 1000,
-      names = ['Andrey', 'Juka', 'Bill', 'John', 'Adolf']
-
-for(let i = 0; i < max; i++) {
-  arr.push(i)
-}
-
-const searchKey = _.random(0, max)
-
-binarySearch(searchKey, arr)
-linearSearch(searchKey, arr)
