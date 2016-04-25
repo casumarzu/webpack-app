@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import TodoItem from './TodoItem'
 import _ from 'lodash'
-import { TextField } from 'material-ui'
+// import { TextField } from 'material-ui'
 
 export default class TodoList extends Component {
   static propTypes = {
@@ -46,7 +46,7 @@ export default class TodoList extends Component {
 
     return (
       <form className="todo-list" onSubmit={::this.handleSubmit}>
-        <TextField value={ value } onChange={::this.handleChangeInput} placeholder="task name" />
+        <input value={ value } onChange={::this.handleChangeInput} placeholder="task name" />
         { todoListView }
         <h3>Количество задач: { listLng }</h3>
       </form>

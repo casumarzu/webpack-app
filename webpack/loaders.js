@@ -20,7 +20,7 @@ var imageLoader = {
 var jsLoader = function (loader, lang) {
   var loaders = [loader];
 
-  if(NODE_ENV === 'dev') loaders = ['react-hot', loader];
+  if(NODE_ENV === 'development') loaders = ['react-hot', loader];
 
   return {
     test: lang,
@@ -41,9 +41,9 @@ var fileLoader = function (loader, lang) {
 }
 
 var styleLoader = function (loader, lang) {
-  if(NODE_ENV === 'dev'){
+  if(NODE_ENV === 'development'){
     loader = 'style-loader' + loader;
-  }else if(NODE_ENV === 'prod'){
+  }else if(NODE_ENV === 'production'){
     loader = ExtractTextPlugin.extract('style-loader', loader);
   }
 
@@ -56,7 +56,6 @@ var styleLoader = function (loader, lang) {
 var babelLoader   = jsLoader('babel-loader', /\.js?$|\.jsx?$/);
 var coffeeLoader  = jsLoader('coffee-jsx-loader', /\.coffee?$/);
 var tsLoader      = jsLoader('ts-loader!ts-jsx-loader', /\.ts?$/);
-var closureLoader = jsLoader('closure-loader', /\.cljs?$/);
 
 var jadeLoader = fileLoader('jade', /\.jade?$/);
 
@@ -72,7 +71,6 @@ var loaders = [
   babelLoader,
   coffeeLoader,
   tsLoader,
-  closureLoader,
   jadeLoader,
   cssLoader,
   stylLoader,

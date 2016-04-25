@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { RaisedButton } from 'material-ui'
+// import { RaisedButton } from 'material-ui'
 
 const style = {
   margin: 10
@@ -16,7 +16,11 @@ export default class Counter extends Component {
   render() {
     return (
       <div className="btn">
-        <RaisedButton onClick={ ::this.handleBtnClick } label={ `Счетчик - ${this.state.count}` } secondary={ true } style={ style } />
+        <button
+          onClick={ ::this.handleBtnClick }
+          value={ `Счетчик - ${this.state.count}` }
+          secondary={ true }
+          style={ style }>Счетчик - {this.state.count}</button>
       </div>
     )
   }

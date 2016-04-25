@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import _ from 'lodash'
-import { Checkbox, IconButton } from 'material-ui'
-import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
+// import { Checkbox, IconButton } from 'material-ui'
+// import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
 import * as todoListActions from '../actions/TodoList.Actions'
 
 export default class TodoList extends Component {
@@ -19,7 +19,16 @@ export default class TodoList extends Component {
           <ActionGrade/>
           </IconButton>
         */}
-        <Checkbox key={ id } id={ `checkBox-${id}` } label={ `Задача: ${name}`} checked={ checked } onCheck={::this.handleCheck} />
+        <label>
+          <input
+            type="checkbox"
+            key={ id }
+            id={ `checkBox-${id}` }
+            label={ `Задача: ${name}`}
+            checked={ checked }
+            onChange={::this.handleCheck} />
+          <span>Задача: {name}</span>
+        </label>
       </div>
     )
   }

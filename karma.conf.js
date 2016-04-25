@@ -8,8 +8,7 @@ module.exports = function(config) {
       './client/**/*.test.js': ['webpack']
     },
 
-    webpack: {
-    },
+    webpack: {},
 
     webpackMiddleware: {
       noInfo: true

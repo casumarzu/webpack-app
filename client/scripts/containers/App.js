@@ -18,10 +18,14 @@ class App extends Component {
 
     return (
       <div className="Wrapper">
-        {/*<GridList cols={2} padding={1}></GridList>*/}
+        {/*
+          <GridList cols={2} padding={1}></GridList>
+        */}
         <TodoList list={ todoList.list } addItem={ addItem } checkItem={ checkItem } />
         <Incrementer count={incrementer.count} getIncrement={increment} />
         <Counter />
+        <h1>Hello</h1>
+        <h2>! !Bye! !</h2>
       </div>
     )
   }
