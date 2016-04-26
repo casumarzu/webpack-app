@@ -9,7 +9,10 @@ body {
 html {
   size: 100%;
   /*background: var(--mainColor);*/
-  min-width: 340px;
+  background: #000023;
+  min-width: 320px;
+  color: #FFFFD3;
+  font-size: 100%;
 }
 
 #root {
@@ -29,4 +32,22 @@ html {
   justify-content: flex-start;
   align-items: flex-end;
   min-height: 600px;
+}
+
+button {
+  border: none;
+  display: inline-block;
+  padding: 0.5em 1em;
+  background: green;
+  color: #fff;
+  cursor: pointer;
+  transition: all .5s ease;
+  outline: none;
+  margin: 1em;
+  &:hover {
+    background: blue;
+  }
+  &:active {
+    background: red;
+  }
 }

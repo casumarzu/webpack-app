@@ -84,6 +84,7 @@
     "postcss-sorting": "^1.2.3",
     "precss": "^1.4.0",
     "pug": "^2.0.0-alpha6",
+    "react-toolbox": "^0.16.2",
     "rucksack-css": "^0.8.6",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",

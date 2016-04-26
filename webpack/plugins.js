@@ -17,7 +17,7 @@ if(NODE_ENV === 'development'){
       chunks: ['common', 'alpha', 'vendors']
     }),
     // new NpmInstallPlugin(),
-    new ExtractTextPlugin(),
+    // new ExtractTextPlugin(),
     new CommonsChunkPlugin('vendors', 'vendors.[hash].js'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProgressPlugin(function(percentage, msg) {

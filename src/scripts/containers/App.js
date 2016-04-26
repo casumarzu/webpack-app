@@ -8,6 +8,7 @@ import * as incrementActions from '../actions/Increment.Actions'
 import * as todoListActions from '../actions/TodoList.Actions'
 // import { GridList, GridTile } from 'material-ui'
 import _ from 'lodash'
+import 'Styles/index'
 
 class App extends Component {
   render() {

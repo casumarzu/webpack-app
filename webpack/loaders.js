@@ -63,7 +63,7 @@ var css = '!css-loader!postcss-loader';
 
 var cssLoader  = styleLoader(css, /\.css?$/);
 var stylLoader = styleLoader(css + '!stylus-loader', /\.styl?$/);
-var scssLoader = styleLoader(css + '!sass-loader', /\.scss$/);
+var scssLoader = styleLoader(css + '!sass-loader', /\.scss$|\.sass$/);
 var lessLoader = styleLoader(css + '!less-loader', /\.less?$/);
 
 

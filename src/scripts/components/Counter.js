@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 // import { RaisedButton } from 'material-ui'
-
-const style = {
-  margin: 10
-}
+// import Button from 'react-toolbox/lib/button'
 
 export default class Counter extends Component {
   constructor(props) {
@@ -19,8 +16,7 @@ export default class Counter extends Component {
         <button
           onClick={ ::this.handleBtnClick }
           value={ `Счетчик - ${this.state.count}` }
-          secondary={ true }
-          style={ style }>Счетчик - {this.state.count}</button>
+          secondary={ true } >Счетчик - {this.state.count}</button>
       </div>
     )
   }
