@@ -6,7 +6,7 @@ var path = require('path'),
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var include = path.join(__dirname, '..', '/client'),
+var include = path.join(__dirname, '..', '/src'),
     exclude = /(node_modules)/;
 
 var imageLoader = {
@@ -57,7 +57,7 @@ var babelLoader   = jsLoader('babel-loader', /\.js?$|\.jsx?$/);
 var coffeeLoader  = jsLoader('coffee-jsx-loader', /\.coffee?$/);
 var tsLoader      = jsLoader('ts-loader!ts-jsx-loader', /\.ts?$/);
 
-var jadeLoader = fileLoader('jade', /\.jade?$/);
+var jadeLoader = fileLoader('pug', /\.jade?$/);
 
 var css = '!css-loader!postcss-loader';
 
@@ -68,10 +68,10 @@ var lessLoader = styleLoader(css + '!less-loader', /\.less?$/);
 
 
 var loaders = [
+  jadeLoader,
   babelLoader,
   coffeeLoader,
   tsLoader,
-  jadeLoader,
   cssLoader,
   stylLoader,
   scssLoader,

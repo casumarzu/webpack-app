@@ -1,11 +1,11 @@
 module.exports = function(config) {
   config.set({
     files: [
-      './client/**/*.test.js',
+      './src/**/*.test.js',
     ],
 
     preprocessors: {
-      './client/**/*.test.js': ['webpack']
+      './src/**/*.test.js': ['webpack']
     },
 
     webpack: {},

@@ -15,12 +15,11 @@ if(NODE_ENV === 'development') {
   ];
 }
 
-// var entry = {
-//   common: preEntry.concat(['./client/scripts/index.js']),
-//   alpha: preEntry.concat(['./client/scripts/alpha.js']),
-//   beta: preEntry.concat(['./client/scripts/beta.js'])
-// };
+var entry = {
+  common: preEntry.concat(['./src/scripts/index.js']),
+  alpha: preEntry.concat(['./src/scripts/alpha.js']),
+  beta: preEntry.concat(['./src/scripts/beta.js'])
+};
 
-var entry = preEntry.concat(['./client/scripts/index.js']);
 
 module.exports = entry;

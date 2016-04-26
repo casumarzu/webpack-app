@@ -4,7 +4,7 @@ var webpack = require('webpack'),
     WebpackDevServer = require('webpack-dev-server');
 
 new WebpackDevServer(webpack(config), {
-  contentBase: './client',
+  contentBase: './src',
   hot: true,
   historyApiFallback: true,
   proxy: {

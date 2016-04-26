@@ -1,5 +1,6 @@
 var NODE_ENV = process.env.NODE_ENV;
 var webpack = require('webpack');
+var path = require('path');
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var HtmlPlugin = require('html-webpack-plugin');
 var NpmInstallPlugin = require('npm-install-webpack-plugin');
@@ -10,35 +11,35 @@ if(NODE_ENV === 'development'){
   plugins = [
     new HtmlPlugin({
       filename: 'index.html',
-      title: 'Development App',
-      template: './client/templates/index.jade',
-      favicon: './client/favicon.ico',
-      // chunks: ['common', 'alpha', 'vendors']
+      title: 'D.App',
+      favicon: path.join(__dirname, '..', '/src', 'favicon.ico'),
+      template: path.join(__dirname, '..', '/src', '/templates/index.html'),
+      chunks: ['common', 'alpha', 'vendors']
     }),
-    new NpmInstallPlugin(),
+    // new NpmInstallPlugin(),
     new ExtractTextPlugin(),
     new CommonsChunkPlugin('vendors', 'vendors.[hash].js'),
     new webpack.HotModuleReplacementPlugin(),
-    // new webpack.ProgressPlugin(function(percentage, msg) {
-    //   console.log((percentage * 100) + '%', msg);
-    // }),
+    new webpack.ProgressPlugin(function(percentage, msg) {
+      console.log((percentage * 100) + '%', msg);
+    }),
     // new webpack.NoErrorsPlugin()
   ];
 }else if(NODE_ENV === 'production'){
   plugins = [
     new HtmlPlugin({
       filename: 'index.html',
-      title: 'Production App',
-      template: './client/templates/index.jade',
-      favicon: './client/favicon.ico',
-      // chunks: ['common', 'beta', 'vendors'],
+      title: 'P.App',
+      favicon: path.join(__dirname, '..', '/src', 'favicon.ico'),
+      template: path.join(__dirname, '..', '/src', '/templates/index.html'),
+      chunks: ['common', 'beta', 'vendors'],
     }),
-    // new CommonsChunkPlugin('vendors', 'vendors.[hash].js'),
+    new CommonsChunkPlugin('vendors', 'vendors.[hash].js'),
     new ExtractTextPlugin('bundle.[hash].css', { allChunks: true }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}}),
-    new NpmInstallPlugin()
+    // new NpmInstallPlugin()
   ];
 }
 

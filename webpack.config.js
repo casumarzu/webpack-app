@@ -18,30 +18,30 @@ var config = {
   resolve: {
     extensions: ['', '.js', '.css', '.scss', '.less', '.styl', '.json', '.eot'],
     alias: {
-      Root: path.resolve( __dirname, 'client' ),
-      Actions: path.resolve( __dirname, 'client', 'scripts', 'actions' ),
-      Constants: path.resolve( __dirname, 'client', 'scripts', 'constants' ),
-      Reducers: path.resolve( __dirname, 'client', 'scripts', 'reducers' ),
-      Store: path.resolve( __dirname, 'client', 'scripts', 'store' ),
+      Root: path.resolve( __dirname, 'src' ),
+      Actions: path.resolve( __dirname, 'src', 'scripts', 'actions' ),
+      Constants: path.resolve( __dirname, 'src', 'scripts', 'constants' ),
+      Reducers: path.resolve( __dirname, 'src', 'scripts', 'reducers' ),
+      Store: path.resolve( __dirname, 'src', 'scripts', 'store' ),
 
-      Containers: path.resolve( __dirname, 'client', 'scripts', 'containers' ),
-      Components: path.resolve( __dirname, 'client', 'scripts', 'components' ),
+      Containers: path.resolve( __dirname, 'src', 'scripts', 'containers' ),
+      Components: path.resolve( __dirname, 'src', 'scripts', 'components' ),
 
-      Layout: path.resolve( __dirname, 'client', 'scripts', 'loyouts' ),
-      Page: path.resolve( __dirname, 'client', 'scripts', 'pages' ),
+      Layout: path.resolve( __dirname, 'src', 'scripts', 'loyouts' ),
+      Page: path.resolve( __dirname, 'src', 'scripts', 'pages' ),
 
-      Util: path.resolve( __dirname, 'client', 'scripts', 'utils' ),
-      Exp: path.resolve( __dirname, 'client', 'scripts', 'exp' ),
+      Util: path.resolve( __dirname, 'src', 'scripts', 'utils' ),
+      Exp: path.resolve( __dirname, 'src', 'scripts', 'exp' ),
 
-      Images: path.resolve( __dirname, 'client', 'images' ),
-      Styles: path.resolve( __dirname, 'client', 'stylesheets' ),
-      Tmpl: path.resolve( __dirname, 'client', 'templates' )
+      Images: path.resolve( __dirname, 'src', 'images' ),
+      Styles: path.resolve( __dirname, 'src', 'stylesheets' ),
+      Tmpl: path.resolve( __dirname, 'src', 'templates' )
     }
   },
   plugins: plugins,
   module: {
     preLoaders: [
-      {test: /\.js$/, loaders: ['eslint'], include: [ path.resolve(__dirname, './client')]}
+      {test: /\.js$/, loaders: ['eslint'], include: [ path.resolve(__dirname, './src')]}
     ],
     loaders: loaders
   },
