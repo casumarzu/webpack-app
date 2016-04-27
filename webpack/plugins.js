@@ -5,6 +5,7 @@ var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var HtmlPlugin = require('html-webpack-plugin');
 var NpmInstallPlugin = require('npm-install-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var colors = require('colors');
 var plugins;
 
 if(NODE_ENV === 'development'){
@@ -17,13 +18,14 @@ if(NODE_ENV === 'development'){
       chunks: ['common', 'alpha', 'vendors']
     }),
     // new NpmInstallPlugin(),
-    // new ExtractTextPlugin(),
+    new ExtractTextPlugin(),
     new CommonsChunkPlugin('vendors', 'vendors.[hash].js'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProgressPlugin(function(percentage, msg) {
-      console.log((percentage * 100) + '%', msg);
+      var percentage = (percentage * 100) + '%';
+      console.log(percentage.cyan, msg.green);
     }),
-    // new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin()
   ];
 }else if(NODE_ENV === 'production'){
   plugins = [

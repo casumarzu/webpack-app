@@ -1,16 +1,19 @@
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic);
 :root {
   --mainColor: #1D1746;
 }
 
-body {
-  size: 100%;
-}
-html {
+body, html {
+  font-family: 'Open Sans', sans-serif;
   size: 100%;
   /*background: var(--mainColor);*/
   background: #000023;
   min-width: 320px;
+  margin: 0;
+  padding: 0;
+}
+
+html {
   color: #FFFFD3;
   font-size: 100%;
 }
@@ -23,6 +26,8 @@ html {
 
 :local(.Wrapper) {
   margin: 0 auto;
+  box-sizing: border-box;
+  padding: 2em;
 }
 
 :local(.FlexWrapper) {
@@ -35,19 +40,26 @@ html {
 }
 
 button {
+  font-size: 1em;
   border: none;
   display: inline-block;
-  padding: 0.5em 1em;
+  padding: 1em;
   background: green;
   color: #fff;
   cursor: pointer;
   transition: all .5s ease;
   outline: none;
-  margin: 1em;
+  margin: 1em 0;
   &:hover {
     background: blue;
   }
   &:active {
     background: red;
   }
+}
+
+input[type="text"] {
+  border: none;
+  display: block;
+  size: 100% 4em;
 }

@@ -4,6 +4,9 @@ import _ from 'lodash'
 // import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
 import * as todoListActions from '../actions/TodoList.Actions'
 
+import styles from 'Styles/Todo.styl'
+console.log('styles', styles);
+
 export default class TodoList extends Component {
   handleCheck(e) {
     const { checked } = e.target
@@ -13,7 +16,7 @@ export default class TodoList extends Component {
   render() {
     const { id, name, checked } = this.props
     return (
-      <div className="todo-list__item">
+      <div className={ styles['todo-list__item'] }>
         {/*
           <IconButton tooltip="bottom-right" touch={true} tooltipPosition="bottom-right">
           <ActionGrade/>

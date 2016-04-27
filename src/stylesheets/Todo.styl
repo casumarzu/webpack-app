@@ -1,0 +1,28 @@
+.todo-list
+  font-size 1em
+  display inline-block
+  text-align left
+  padding: 1em 0
+  :local &__item
+    margin: 1em 0
+    color = green
+    background color - 20%
+    transition all .3s ease
+    cursor pointer
+    &:hover
+      background color - 30%
+    label
+      display block
+      cursor pointer
+      padding 1em
+    span
+      transition all .5s ease
+      padding-left 0.5em
+    input:checked + span
+      color color + 20%
+
+:global .MeatClass
+  padding 3em
+
+:local .ShitClass
+  margin 3em

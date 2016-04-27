@@ -6,11 +6,13 @@ import Incrementer from '../components/Incrementer'
 import TodoList from '../components/TodoList'
 import * as incrementActions from '../actions/Increment.Actions'
 import * as todoListActions from '../actions/TodoList.Actions'
-// import { GridList, GridTile } from 'material-ui'
 import _ from 'lodash'
-import 'Styles/index'
+import styles from 'Styles/index'
 
 class App extends Component {
+  componentDidMount() {
+    console.log('loaded');
+  }
   render() {
     const { incrementer, todoList } = this.props
     const { increment } = this.props.incrementActions
@@ -18,15 +20,10 @@ class App extends Component {
     const { addItem, checkItem } = this.props.todoListActions
 
     return (
-      <div className="Wrapper">
-        {/*
-          <GridList cols={2} padding={1}></GridList>
-        */}
+      <div className={ styles.Wrapper }>
         <TodoList list={ todoList.list } addItem={ addItem } checkItem={ checkItem } />
         <Incrementer count={incrementer.count} getIncrement={increment} />
         <Counter />
-        <h1>Hello</h1>
-        <h2>! !Bye! !</h2>
       </div>
     )
   }
