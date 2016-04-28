@@ -1,1 +1,1 @@
-console.log('beta!');
+if(Symbol) window.beta = Symbol('@@beta')

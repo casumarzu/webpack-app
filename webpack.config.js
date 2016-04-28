@@ -9,7 +9,15 @@ var entry = require('./webpack/entry');
 
 var config = {
   entry: entry,
-  vendors: ['react', 'reset.css', 'normalize.css'],
+  vendors: [
+    'react',
+    'react-dom',
+    'react-redux',
+    'react-router',
+    'react-router-redux',
+    'redux',
+    'lodash'
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '',

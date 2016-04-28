@@ -10,17 +10,28 @@ import _ from 'lodash'
 import styles from 'Styles/index'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { show: false }
+  }
   componentDidMount() {
-    console.log('loaded');
+    const show = ()=> {
+      this.setState({ show: true })
+    }
+    setTimeout(()=> {
+      show()
+    }, 1000)
+
   }
   render() {
     const { incrementer, todoList } = this.props
     const { increment } = this.props.incrementActions
 
     const { addItem, checkItem } = this.props.todoListActions
-
+    let show = styles.__active
+    if(!this.state.show) show = ''
     return (
-      <div className={ styles.Wrapper }>
+      <div className={`${styles.Wrapper} ${show}`}>
         <TodoList list={ todoList.list } addItem={ addItem } checkItem={ checkItem } />
         <Incrementer count={incrementer.count} getIncrement={increment} />
         <Counter />

@@ -41,7 +41,7 @@ export default class TodoList extends Component {
 
     const todoListView = list.map((task) => {
       return (
-        <TodoItem list={ list } id={ task.id } name={ task.name } checked={ task.checked } checkItem={checkItem} />
+        <TodoItem key={ task.id } id={ task.id } list={ list } name={ task.name } checked={ task.checked } checkItem={checkItem} />
       )
     })
 

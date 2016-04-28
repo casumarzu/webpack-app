@@ -5,7 +5,6 @@ import _ from 'lodash'
 import * as todoListActions from '../actions/TodoList.Actions'
 
 import styles from 'Styles/Todo.styl'
-console.log('styles', styles);
 
 export default class TodoList extends Component {
   handleCheck(e) {

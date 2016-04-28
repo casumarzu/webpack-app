@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 // import { RaisedButton } from 'material-ui'
-// import Button from 'react-toolbox/lib/button'
 
 export default class Counter extends Component {
   constructor(props) {

@@ -1,1 +1,1 @@
-console.log('alpha!');
+if(Symbol) window.alpha = Symbol('@@alpha')
